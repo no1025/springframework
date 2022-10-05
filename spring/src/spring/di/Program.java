@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import spring.di.entity.Exam;
@@ -23,12 +24,12 @@ public class Program {
 		*/
 		
 		ApplicationContext context = 
-				new ClassPathXmlApplicationContext("spring/di/setting.xml");
-		
+//				new ClassPathXmlApplicationContext("spring/di/setting.xml");
+					new AnnotationConfigApplicationContext(NewlecDIConfig.class);
 //		Exam exam = context.getBean(Exam.class);
 //		System.out.println(exam.toString());
-//		ExamConsole console = (ExamConsole) context.getBean("console");
-		ExamConsole console = context.getBean(ExamConsole.class);
+		ExamConsole console = (ExamConsole) context.getBean("console");
+//		ExamConsole console = context.getBean(ExamConsole.class);
 		console.print();
 		//List<Exam> exams = (List<Exam>) context.getBean("exams");//new ArrayList<>();
 		//exams.add(new NewlecExam(1,1,1,1));
